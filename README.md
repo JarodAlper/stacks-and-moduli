@@ -8,9 +8,9 @@ A Lean 4 formalization of definitions and results from the book draft
 The aim is to state every labelled definition, lemma, proposition, theorem, and corollary
 of the book faithfully, with the same hypotheses and conclusions at the book's level of
 generality, and to prove as many of them as possible. Examples and exercises are included
-where they are used later in the book or are easy to state. This is work in progress, and
-a large part of the library was written with the help of AI coding agents, so expect
-rough edges, open `sorry`s, and proofs that will be reorganized.
+where they are used later in the book or are easy to state. This is work in progress and was
+written entirely by AI coding agents with very little supervision, so expect
+misformalizations.
 
 ## Layout
 
