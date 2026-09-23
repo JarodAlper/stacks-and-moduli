@@ -1,0 +1,32 @@
+name = "StacksAndModuli"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["StacksAndModuli", "StacksProject"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.34.0-rc1"
+
+# The root module `StacksAndModuli` pulls in every chapter, and with it every section part file.
+# The extra `.+` globs cover the supporting trees, whose files are reached only when some
+# part file happens to import them: `API/` and `Util/` hold material developed ahead of (or
+# left behind by) its consumers, and `mwe/` is a standalone showcase that nothing imports.
+# Globbing them builds those files even while unwired, so CI catches breakage there too.
+[[lean_lib]]
+name = "StacksAndModuli"
+globs = ["StacksAndModuli", "StacksAndModuli.API.+", "StacksAndModuli.Util.+", "StacksAndModuli.mwe.+"]
+
+# Formalizations of Stacks Project tags, organized per STYLE.md as
+# `ChapterName/SectionName/label.lean`. The `.+` glob builds every tag file even before
+# anything imports it, so CI catches breakage in files that are not yet wired up.
+[[lean_lib]]
+name = "StacksProject"
+srcDir = "stacks-project-lean"
+globs = ["StacksProject.+"]

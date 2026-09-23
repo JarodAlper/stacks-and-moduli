@@ -1,0 +1,25 @@
+# Lake build artifacts
+/.lake/
+
+# Book sources and compiled documents must never be committed
+*.tex
+*.bib
+*.pdf
+*.aux
+/alperbook/
+/stacks-project-book/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editors and OS
+.DS_Store
+.vscode/
+
+# Local agent configuration and scratch work
+/.claude/
+/.codex/
+/.agents/
+/Scratch*.lean
+*.lean.skip
