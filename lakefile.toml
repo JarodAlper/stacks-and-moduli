@@ -1,6 +1,9 @@
 name = "StacksAndModuli"
 version = "0.1.0"
-keywords = ["math"]
+description = "Lean 4 formalization of Stacks and Moduli (Jarod Alper) on Mathlib"
+homepage = "https://github.com/JarodAlper/stacks-and-moduli"
+license = "Apache-2.0"
+keywords = ["math", "algebraic-geometry", "stacks", "moduli"]
 defaultTargets = ["StacksAndModuli", "StacksProject"]
 
 [leanOptions]

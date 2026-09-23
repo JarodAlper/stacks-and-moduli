@@ -1,0 +1,237 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml (v0.4): repo-root metadata for formalization projects.
+# Standard: https://github.com/mathlib-initiative/formalization.yaml
+
+version: "v0.4"
+
+project:
+  name: "Stacks and Moduli in Lean"
+  description: >-
+    A Lean 4 formalization, on top of Mathlib, of definitions and results from
+    the book draft "Stacks and Moduli" by Jarod Alper: Hilbert, Quot and
+    Grassmannian functors and their representability and projectivity
+    (Chapter 2), descent, sites, sheaves, prestacks and stacks (Chapter 3),
+    algebraic spaces, Deligne–Mumford and algebraic stacks and their
+    properties, including representability of the diagonal, algebraicity of
+    quotient stacks and of the moduli stack of smooth curves, smoothness and
+    valuative criteria (Chapter 4), nodal and stable curves and the moduli
+    stack of stable curves (Chapter 6), and parts of the appendix on
+    properness and cohomology and base change. The library also formalizes,
+    in a separate tree, results the book cites from the Stacks Project.
+  authors:
+    - "Jarod Alper"
+  responsible_maintainers:
+    - "Jarod Alper"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Stacks and Moduli"
+    authors:
+      - "Jarod Alper"
+    id: "https://sites.math.washington.edu/~jarod/moduli.pdf"
+    type: "book"
+    location: >-
+      Sections 2.1–2.5, 3.1–3.5, 4.1–4.9, 6.1–6.5, A.4 and A.6. Each Lean
+      declaration that is the designated statement of a labelled result opens
+      its docstring with the book's number and LaTeX label, for example
+      "**Proposition 3.1.1** (`prop:descent-modules`)".
+    relationship: "formalizes"
+    note: >-
+      Numbering follows the draft the library was written against and may
+      drift as the book is revised; the LaTeX label is the stable key.
+    author_endorsement: "participated"
+  - title: "The Stacks Project"
+    authors:
+      - "The Stacks Project Authors"
+    id: "https://stacks.math.columbia.edu"
+    type: "web"
+    location: >-
+      Individual tags cited by the book, one file per tag under
+      stacks-project-lean/StacksProject/<Chapter>/<Section>/<label>.lean, each
+      naming its tag(s) in the module docstring.
+    relationship: "formalizes"
+    note: >-
+      Statements quoted or paraphrased in docstrings remain under the GFDL; see
+      stacks-project-lean/README.md for the attribution notice.
+    license: "GFDL-1.2-or-later"
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "https://github.com/leanprover-community/mathlib4"
+    relationship: "builds-on"
+    note: "Schemes, sites, sheaves, fibered categories and commutative algebra are taken from Mathlib."
+
+classification:
+  arxiv:
+    - "math.AG"
+  msc2020:
+    - "14D23"
+    - "14A20"
+    - "14H10"
+    - "14C05"
+    - "18F10"
+    - "18F20"
+
+status:
+  scope: >-
+    Designated Lean statements exist for 203 labelled items of the book
+    (definitions, propositions, theorems, lemmas, corollaries, examples,
+    exercises and remarks), plus 37 Stacks Project tags. Many are proved; 93
+    theorems still contain a sorry (31 files), and further results depend on
+    them. Roughly 346,000 lines of Lean in 1,169 files, plus about 11,000
+    lines for the Stacks Project tags. The whole library builds with Lean
+    4.34.0-rc1 and the Mathlib pinned in lake-manifest.json.
+  sorry_count: 93
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+    - "sorryAx"
+  main_results:
+    - declaration: "AlgebraicGeometry.Scheme.exists_grassmannianOverFunctor_representableBy"
+      file: "StacksAndModuli/Section2.2-Grassmannian/part2.2.3-relative-grassmannians.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "AlgebraicGeometry.ProjectiveSpace.exists_boundsRegularity_of_field"
+      file: "StacksAndModuli/Section2.3-Regularity/part2.3.2-regularity-bounds.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "CategoryTheory.BasedCategory.exists_stackification"
+      file: "StacksAndModuli/Section3.5-Stacks/part3.5.6-stackification.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "AlgebraicGeometry.IsAlgebraicStack.representable_diag"
+      file: "StacksAndModuli/Section4.2-Representability/part4.2.1-representability.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "AlgebraicGeometry.PresheafGroupoid.isAlgebraicStack_quotientPrestack_ofAction"
+      file: "StacksAndModuli/Section4.4-Equivalence-Relations/part4.4.4-algebraicity.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "AlgebraicGeometry.PresheafGroupoid.isAlgebraicStack_of_isStackification"
+      file: "StacksAndModuli/Section4.4-Equivalence-Relations/part4.4.4-algebraicity.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+    - declaration: "AlgebraicGeometry.Scheme.exists_quotFunctorP_representableBy"
+      file: "StacksAndModuli/Section2.1-Intro/part2.1.3a-quot-representability-endpoint.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound", "sorryAx"]
+      note: "Proof complete at this declaration but depends on sorried lemmas upstream."
+    - declaration: "AlgebraicGeometry.Scheme.exists_hilbFunctorP_representableBy"
+      file: "StacksAndModuli/Section2.1-Intro/part2.1.4-hilbert-representability-via-quot.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound", "sorryAx"]
+      note: "Proof complete at this declaration but depends on sorried lemmas upstream."
+    - declaration: "AlgebraicGeometry.Scheme.isAlgebraicStack_moduliOfCurves"
+      file: "StacksAndModuli/Section4.1-Definitions/part4.1.4-algebraicity-of-mg.lean"
+      axioms: ["propext", "Classical.choice", "Quot.sound", "sorryAx"]
+      note: "Algebraicity of the moduli stack of smooth curves; depends on sorried lemmas."
+    - declaration: "AlgebraicGeometry.IsAlgebraicStack.isDeligneMumfordStack_iff_representableWith_unramified_diag"
+      file: "StacksAndModuli/Section4.6-Characterization/part4.6.2-equivalent-characterizations.lean"
+      axioms: ["propext", "Classical.choice", "Quot.sound", "sorryAx"]
+      note: "Characterization of Deligne–Mumford stacks; depends on sorried lemmas."
+    - declaration: "AlgebraicGeometry.BasedFunctor.isProper_iff_finiteType_and_exists_extension_unique_lifting"
+      file: "StacksAndModuli/Section4.8-Properness/part4.8.2-valuative-criteria.lean"
+      axioms: ["propext", "Classical.choice", "Quot.sound", "sorryAx"]
+      note: "Valuative criterion for properness of stacks; depends on sorried lemmas."
+
+automation:
+  methods:
+    - method: "agent"
+      models: []
+      framework: "Claude Code"
+      tool_setup: >-
+        Lean 4 with Mathlib; agents worked from repository instruction files
+        (an agent guide and a style guide) and per-section STATUS, INSIGHTS and
+        COMMENTARY tracking notes, with `lake build` as the check. The tracking
+        notes are not part of the public repository.
+      prompting_notes: >-
+        Agents were instructed to formalize every labelled statement faithfully
+        at the book's level of generality, to record any change of statement or
+        proof route in commentary notes, and never to strengthen hypotheses or
+        weaken conclusions to make a proof go through.
+    - method: "agent"
+      models: []
+      framework: "OpenAI Codex"
+      tool_setup: "Same repository setup as above; work from the two frameworks was merged by hand."
+  notes: >-
+    The library was written entirely by AI coding agents with very little
+    human supervision. Model versions, wall time and spend were not recorded.
+
+fidelity:
+  divergences: >-
+    Statements are paraphrased into Mathlib's language rather than quoted.
+    Deviations were recorded during development in per-section COMMENTARY
+    notes that are not included in this repository; docstrings mention the
+    ones that affect a statement, for example results stated over an affine
+    base or with an added coherence clause. No systematic audit of fidelity
+    against the book has been carried out, and misformalizations are expected.
+
+review:
+  status: "unchecked"
+  reviewers: []
+  notes: >-
+    No systematic human or independent review of the formal statements
+    against the book has taken place. Lean has checked every proof that
+    contains no sorry; the axiom lists above were computed with
+    `#print axioms`.
+
+alignment:
+  namespace: "AlgebraicGeometry (schemes, spaces and stacks) and CategoryTheory.BasedCategory (prestacks and stacks)"
+  convention: >-
+    A declaration whose docstring opens with the book's number and label is the
+    designated statement of that result; a label may have several such
+    declarations (parts or equivalent formulations). Everything else is
+    supporting material. Search the label, for example `prop:descent-modules`,
+    to find the corresponding declarations.
+  statements:
+    - source: "Theorem 2.1.1 (thm:grassmannian-projective-relative)"
+      lean: "AlgebraicGeometry.Scheme.exists_grassmannianOverFunctor_representableBy"
+      module: "StacksAndModuli.«Section2.2-Grassmannian».«part2.2.3-relative-grassmannians»"
+      status: "proved"
+    - source: "Theorem 2.1.2 (thm:hilbert-scheme-representable)"
+      lean: "AlgebraicGeometry.Scheme.exists_hilbFunctorP_representableBy"
+      module: "StacksAndModuli.«Section2.1-Intro».«part2.1.4-hilbert-representability-via-quot»"
+      status: "in-progress"
+    - source: "Theorem 2.1.3 (thm:quot-scheme-representable)"
+      lean: "AlgebraicGeometry.Scheme.exists_quotFunctorP_representableBy"
+      module: "StacksAndModuli.«Section2.1-Intro».«part2.1.3a-quot-representability-endpoint»"
+      status: "in-progress"
+    - source: "Theorem 2.3.8 (thm:boundedness-of-regularity)"
+      lean: "AlgebraicGeometry.ProjectiveSpace.exists_boundsRegularity_of_field"
+      module: "StacksAndModuli.«Section2.3-Regularity».«part2.3.2-regularity-bounds»"
+      status: "proved"
+    - source: "Theorem 3.5.18 (thm:stackification)"
+      lean: "CategoryTheory.BasedCategory.exists_stackification"
+      module: "StacksAndModuli.«Section3.5-Stacks».«part3.5.6-stackification»"
+      status: "proved"
+    - source: "Theorem 4.1.10 (thm:quotient-stack-is-algebraic)"
+      lean: "AlgebraicGeometry.PresheafGroupoid.isAlgebraicStack_quotientPrestack_ofAction"
+      module: "StacksAndModuli.«Section4.4-Equivalence-Relations».«part4.4.4-algebraicity»"
+      status: "proved"
+    - source: "Theorem 4.1.17 (thm:mg-is-algebraic)"
+      lean: "AlgebraicGeometry.Scheme.isAlgebraicStack_moduliOfCurves"
+      module: "StacksAndModuli.«Section4.1-Definitions».«part4.1.4-algebraicity-of-mg»"
+      status: "in-progress"
+    - source: "Theorem 4.2.1 (thm:representability-of-the-diagonal)"
+      lean: "AlgebraicGeometry.IsAlgebraicStack.representable_diag"
+      module: "StacksAndModuli.«Section4.2-Representability».«part4.2.1-representability»"
+      status: "proved"
+    - source: "Theorem 4.4.13 (thm:algebraicity-of-groupoid-quotients)"
+      lean: "AlgebraicGeometry.PresheafGroupoid.isAlgebraicStack_of_isStackification"
+      module: "StacksAndModuli.«Section4.4-Equivalence-Relations».«part4.4.4-algebraicity»"
+      status: "proved"
+    - source: "Theorem 4.6.4 (thm:characterization-of-DM-stacks)"
+      lean: "AlgebraicGeometry.IsAlgebraicStack.isDeligneMumfordStack_iff_representableWith_unramified_diag"
+      module: "StacksAndModuli.«Section4.6-Characterization».«part4.6.2-equivalent-characterizations»"
+      status: "in-progress"
+    - source: "Theorem 4.8.7 (thm:valuative-criteria-stacks)"
+      lean: "AlgebraicGeometry.BasedFunctor.isProper_iff_finiteType_and_exists_extension_unique_lifting"
+      module: "StacksAndModuli.«Section4.8-Properness».«part4.8.2-valuative-criteria»"
+      status: "in-progress"
+
+acknowledgements: >-
+  Built on Mathlib and Lean 4. Results cited from the Stacks Project are
+  formalized with attribution under stacks-project-lean/. The formalization
+  was carried out by AI coding agents (Claude Code and OpenAI Codex).
